@@ -6,18 +6,18 @@ interface AppState {
   setView: (view: string) => void;
 }
 
-export const useStore = create(  
-    persist<AppState>(
+export const useStore = create<AppState>()(  
+    persist(
       (set, get) => ({       
         view: "home",
         setView: (view: string) => set({ view: view })        
       }),
       {
         name: "r3f_app",
-        getStorage: () => sessionStorage,
-        partialize: state => {
-          return {...state, view: state.view}
-        },        
+        getStorage: () => localStorage,
+        partialize: (state) => ({
+          view: state.view
+        }),        
       }
     )  
 );
