@@ -6,8 +6,11 @@
 
 html,
 body {
-  width: 100vw;
-  height: 100vh;
   font-family: 'Roboto', sans-serif, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
 }
 
+.app-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
