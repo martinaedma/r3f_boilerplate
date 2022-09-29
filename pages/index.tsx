@@ -9,10 +9,15 @@ const CanvasComponent = dynamic(
 );
 
 const Home: NextPage = () => {
-  const view = useStore((state) => state.view);
+  const textContainerRef = useStore((state) => state.textContainerRef)
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if(!textContainerRef.current) return    
+    textContainerRef.current.position.y += e.deltaY * 0.01
+  }
 
   return (
-    <div className="app-container">
+    <div className="app-container" onWheel={(e) => handleWheel(e)}>
       <Suspense fallback={null}>
         <CanvasComponent />
       </Suspense>
