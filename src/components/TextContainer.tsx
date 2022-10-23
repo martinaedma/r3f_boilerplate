@@ -1,10 +1,16 @@
+import { useFrame } from "@react-three/fiber"
+import { createRef, MutableRefObject, useEffect, useLayoutEffect, useRef } from "react"
 import * as THREE from "three"
+import { Group } from "three"
 import { useStore } from "../store"
 import { TextComponent } from "./scene/TextComponent"
 
-export const TextContainer = ():JSX.Element => {
-  
-  const textContainerRef = useStore((state) => state.textContainerRef)
+interface TextContainerProps {
+  containerRef: MutableRefObject<Group | null>
+  yPos: number
+}
+
+export const TextContainer = ({containerRef, yPos}: TextContainerProps):JSX.Element => {
 
   const text: string[] = [
     'MARTIN AEDMA',
@@ -24,7 +30,13 @@ export const TextContainer = ():JSX.Element => {
     'S. WRESTLING',
   ]
 
-  return <group ref={textContainerRef}>
+  // useFrame(() => {
+  //   if (!ref.current) return
+  //   console.log(ref.current)
+  //   ref.current.position.set()
+  // })
+
+  return <group ref={containerRef} position={[0, yPos, 0]}>
     {text.map((text, index) => {
       const indexString = (index + 1).toString()
       return <TextComponent

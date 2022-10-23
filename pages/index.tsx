@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { TestComponent } from "../src/components/TestComponent";
 import { useStore } from "../src/store";
 
 const CanvasComponent = dynamic(
@@ -9,11 +10,13 @@ const CanvasComponent = dynamic(
 );
 
 const Home: NextPage = () => {
-  const textContainerRef = useStore((state) => state.textContainerRef)
+  const cameraRef = useStore((state) => state.cameraRef)
+  const textContainerFirstRef = useStore((state) => state.textContainerFirstRef)
+  const textContainerSecondRef = useStore((state) => state.textContainerSecondRef)
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if(!textContainerRef.current) return    
-    textContainerRef.current.position.y += e.deltaY * 0.01
+    if (!cameraRef.current || !textContainerFirstRef || !textContainerSecondRef) return
+    cameraRef.current.position.y += e.deltaY * -0.01
   }
 
   return (
@@ -21,7 +24,8 @@ const Home: NextPage = () => {
       <Suspense fallback={null}>
         <CanvasComponent />
       </Suspense>
-    </div>
+      <TestComponent/>
+    </div>    
   );
 };
 

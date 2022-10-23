@@ -35,7 +35,7 @@ export const TextComponent = ({
   // })
 
   return (
-    <group ref={groupRef} position={[pos.x, pos.y, pos.z]}>
+    <group ref={groupRef} position={[pos.x, pos.y, pos.z]}> 
         <Text
           font={"./3D_fonts/Roboto-Regular.ttf"}
           fontSize={0.2}
@@ -45,6 +45,7 @@ export const TextComponent = ({
           <defaultShaderMaterial />
         </Text>
         <Text
+          name="test"
           position={[pos.x, pos.y, 0]}
           font={"./3D_fonts/Roboto-Medium.ttf"}
           anchorX="left"
