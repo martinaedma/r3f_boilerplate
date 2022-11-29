@@ -1,5 +1,5 @@
 import { extend, ReactThreeFiber } from "@react-three/fiber";
-import { DefaultShaderMaterial } from "./materials/DefaultShaderMaterial"
+import { DefaultShaderMaterial } from "./materials/PlaneShaderMaterial"
 
 extend({ DefaultShaderMaterial });
 

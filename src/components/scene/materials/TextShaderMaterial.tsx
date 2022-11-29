@@ -29,7 +29,7 @@ void main() {
 }
 `;
 
-export class DefaultShaderMaterial extends ShaderMaterial {
+export class TextShaderMaterial extends ShaderMaterial {
   constructor() {
     super({
       vertexShader: vertex,
@@ -53,4 +53,4 @@ export class DefaultShaderMaterial extends ShaderMaterial {
   }
 }
 
-extend({ DefaultShaderMaterial });
+extend({ TextShaderMaterial });
